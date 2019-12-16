@@ -10,7 +10,7 @@ class Request(object):
   def _parse_GET(self, text):
     output = {}
     try:
-      raw_get = text.split('GET /?')[1].split(' HTTP')[0].split('&')
+      raw_get = text.split('/?')[1].split(' HTTP')[0].split('&')
       for param in raw_get:
         tokens = param.split('=')
         output[tokens[0]] = tokens[1]

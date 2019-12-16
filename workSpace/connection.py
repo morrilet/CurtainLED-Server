@@ -8,7 +8,7 @@ class Connection(object):
   TIMEOUT = 5
   
   # Default HTML response format.
-  _htmlFormat = '<html><head></head><body>{}</body></html>'
+  _htmlFormat = '<html><head></head><body><p>GET: {}</p><p>POST: {}</p></body></html>'
   
   def __init__(self, socket, address):
     self._socket = socket
@@ -40,7 +40,7 @@ class Connection(object):
     self._socket.send('HTTP/1.1 200 OK\n')
     self._socket.send('Content-Type: text/html\n')
     self._socket.send('Connection: close\n\n')
-    self._socket.sendall(self._htmlFormat.format(r.POST))
+    self._socket.sendall(self._htmlFormat.format(r.GET, r.POST))
     
     # Close the connection.
     self._socket.close()
